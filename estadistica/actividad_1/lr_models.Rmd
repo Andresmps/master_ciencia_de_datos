@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+wd <- getwd(); file <- paste(wd,"clean_dataset_icfes_bogota_2024.csv",sep="/")
+icfes <- read.csv(file, head=TRUE)
+head(icfes)
+# summary(icfes)
+# pairs(icfes, pch=".")
+
+plot(PUNT_GLOBAL ~ FAMI_ESTRATOVIVIENDA, data = icfes,
+xlab = "Colegio Bilingue",
+ylab = "Puntaje Global Icfes",
+main = "Colegio Bilingue vs Puntaje Global Icfes",
+pch = 20,
+cex = 2,
+col = "grey")
+
+model1 = lm(PUNT_GLOBAL ~ COLE_AREA_UBICACION + COLE_BILINGUE + COLE_GENERO + COLE_JORNADA + COLE_NATURALEZA + COLE_SEDE_PRINCIPAL + ESTU_GENERO + FAMI_CUARTOSHOGAR + FAMI_EDUCACIONMADRE + FAMI_EDUCACIONPADRE + FAMI_ESTRATOVIVIENDA + FAMI_PERSONASHOGAR + FAMI_TIENEAUTOMOVIL + FAMI_TIENECOMPUTADOR + FAMI_TIENEINTERNET + FAMI_TIENELAVADORA + ESTU_EDAD, data = icfes)
+summary(model1)
+
+model2 = lm(PUNT_GLOBAL ~ COLE_BILINGUE + COLE_SEDE_PRINCIPAL + ESTU_GENERO + FAMI_EDUCACIONMADRE + FAMI_EDUCACIONPADRE + FAMI_ESTRATOVIVIENDA + FAMI_TIENEAUTOMOVIL + FAMI_TIENECOMPUTADOR + FAMI_TIENEINTERNET + FAMI_TIENELAVADORA, data = icfes)
+summary(model2) 
+
+model3 = lm(PUNT_GLOBAL ~ COLE_BILINGUE + COLE_SEDE_PRINCIPAL + ESTU_GENERO + FAMI_EDUCACIONMADRE_POST + FAMI_EDUCACIONPADRE_POST + FAMI_ESTRATOVIVIENDA + FAMI_TIENECOMPUTADOR + FAMI_TIENEINTERNET , data = icfes)
+summary(model3) 
+
+model4 = lm(PUNT_GLOBAL ~ COLE_BILINGUE + ESTU_GENERO + FAMI_ESTRATOVIVIENDA + FAMI_TIENECOMPUTADOR + FAMI_TIENEINTERNET +
+FAMI_EDUCACIONMADRE_POST + FAMI_EDUCACIONPADRE_POST + COLE_NATURALEZA + COLE_JORNADA + ESTU_EDAD, data = icfes)
+summary(model4) 
+
+install.packages("pROC")
+library("pROC")
+
+
+model5 = glm(PUNT_GLOBAL_CAT_BIN ~ COLE_BILINGUE + ESTU_GENERO + FAMI_ESTRATOVIVIENDA + FAMI_TIENECOMPUTADOR + FAMI_TIENEINTERNET + FAMI_EDUCACIONMADRE_POST + FAMI_EDUCACIONPADRE_POST + COLE_JORNADA + ESTU_EDAD, data = icfes, family = binomial)
+summary(model5) 
+
+probabilidades <- predict(model5, type = "response")
+predicciones <- ifelse(probabilidades > 0.5, 1, 0)
+matriz_confusion <- table(Real = icfes$PUNT_GLOBAL_CAT_BIN, Prediccion = predicciones)
+print(matriz_confusion)
+
+library(pROC)
+roc_resultado <- roc(response = icfes$PUNT_GLOBAL_CAT_BIN, predictor = probabilidades)
+auc(roc_resultado)
+
+print(auc(roc_resultado))
+
+plot(model5)
+
+
+
+
+x <- data.frame(
+  COLE_BILINGUE = icfes$COLE_BILINGUE,
+  ESTU_GENERO = icfes$ESTU_GENERO,
+  FAMI_ESTRATOVIVIENDA = icfes$FAMI_ESTRATOVIVIENDA,
+  FAMI_TIENECOMPUTADOR = icfes$FAMI_TIENECOMPUTADOR,
+  FAMI_TIENEINTERNET = icfes$FAMI_TIENEINTERNET,
+  FAMI_EDUCACIONMADRE_POST = icfes$FAMI_EDUCACIONMADRE_POST,
+  FAMI_EDUCACIONPADRE_POST = icfes$FAMI_EDUCACIONPADRE_POST,
+  COLE_JORNADA = icfes$COLE_JORNADA,
+  ESTU_EDAD = icfes$ESTU_EDAD
+)
+
+curve(predict(model5, x, type = "response"), add = TRUE, col = "dodgerblue", lty = 2)
+
+plot(PUNT_GLOBAL_CAT_BIN ~ , data = icfes, pch = 20, ylab = "Estimated Probability", main = "Ordinary vs Logistic Regression")
+grid()
+abline(fit_lm, col = "darkorange")
+
+
+legend("topleft", c("Ordinary", "Logistic", "Data"), lty =
+c(1, 2, 0),
++ pch = c(NA, NA, 20), lwd = 2, col = c("darkorange",
+"dodgerblue", "black"))
+

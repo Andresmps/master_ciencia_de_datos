@@ -1,0 +1,69 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# install.packages("corrplot")
+
+
+wd <- getwd(); file <- paste(wd,"clean_student_performance.csv",sep="/")
+rendimiento_estudiantes <- read.csv(file, head=TRUE)
+head(rendimiento_estudiantes)
+# summary(rendimiento_estudiantes)
+pairs(rendimiento_estudiantes, pch=".")
+
+
+plot(indice_de_rendimiento ~ puntaje_previo, data = rendimiento_estudiantes,
+ylab = "Indice de rendimiento",
+xlab = "Puntaje Anterior",
+main = "Indice de rendimiento vs Puntaje Anterior",
+pch = 20,
+cex = 2,
+col = "grey")
+
+
+plot(indice_de_rendimiento ~ horas_estudiadas, data = rendimiento_estudiantes,
+ylab = "Indice de rendimiento",
+xlab = "Horas estudiadas",
+main = "Indice de rendimiento vs Horas estudiadas",
+pch = 20,
+cex = 2,
+col = "grey")
+
+
+library(corrplot)
+M = cor(rendimiento_estudiantes)
+corrplot.mixed(M, order = "AOE")
+
+
+model1 = lm(indice_de_rendimiento ~ horas_estudiadas + puntaje_previo + actividades_extracurrilares + horas_sueño + preguntas_practicadas, data = rendimiento_estudiantes)
+summary(model1)
+
+model2 = lm(indice_de_rendimiento ~ horas_estudiadas + actividades_extracurrilares + horas_sueño + preguntas_practicadas, data = rendimiento_estudiantes)
+summary(model2)
+
+model3 = lm(indice_de_rendimiento ~ puntaje_previo, data = rendimiento_estudiantes)
+summary(model3)
+
+model4 = lm(indice_de_rendimiento ~ puntaje_previo + horas_estudiadas, data = rendimiento_estudiantes)
+summary(model4)
+
+plot(model4)
+
+library("pROC")
+
+
+model5 = glm(indice_de_rendimiento_cat_bin ~ puntaje_previo + horas_estudiadas, data = rendimiento_estudiantes, family = binomial)
+summary(model5) 
+
+probabilidades <- predict(model5, type = "response")
+predicciones <- ifelse(probabilidades > 0.5, 1, 0)
+matriz_confusion <- table(Real = rendimiento_estudiantes$indice_de_rendimiento_cat_bin, Prediccion = predicciones)
+print(matriz_confusion)
+
+library(pROC)
+roc_resultado <- roc(response = rendimiento_estudiantes$indice_de_rendimiento_cat_bin, predictor = probabilidades)
+auc(roc_resultado)
+
+print(auc(roc_resultado))
+
+plot(model5)
