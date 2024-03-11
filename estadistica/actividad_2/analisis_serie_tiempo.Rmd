@@ -1,0 +1,72 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+library("fUnitRoots")
+library(forecast)
+
+setwd("~/Documents/personal-documents/codes/master_ciencia_de_datos/estadistica/actividad_2")
+
+accidentes <- read.csv("serie_limpia.csv")
+accidentestimeseries <- ts(accidentes, frequency=12, start=c(2010,1,1))
+
+plot.ts(accidentestimeseries, plot.type=('single'))
+
+
+boxplot(accidentestimeseries~cycle(accidentestimeseries))
+
+accidentestimeseriescomponents <- decompose(accidentestimeseries)
+plot(accidentestimeseriescomponents)
+
+
+urkpssTest(accidentestimeseries, type = c("tau"), lags = c("long"),use.lag = NULL, doplot = TRUE)
+
+stationary = diff(accidentestimeseries, differences=1)
+plot(stationary)
+
+acf(accidentestimeseries,lag.max=20) 
+
+accidentestimeseriesseasonallyadjusted <- accidentestimeseries- accidentestimeseriescomponents$seasonal
+tsstationary <- diff(accidentestimeseriesseasonallyadjusted, differences=1)
+plot(tsstationary)
+
+acf(tsstationary, lag.max=34)
+
+pacf(tsstationary, lag.max=34)
+
+fitARIMA <- arima(tsstationary, order=c(1,1,1), method="ML")
+fitARIMA
+
+acf(fitARIMA$residuals)
+
+Box.test(fitARIMA$residuals, lag=20, type="Ljung-Box")
+
+qqnorm(fitARIMA$residuals)
+qqline(fitARIMA$residuals)
+
+auto.arima(accidentestimeseries, trace=TRUE) 
+
+model_order <- c(0, 1, 1)  # ARIMA(0, 1, 1)
+seasonal_order <- list(order = c(2,0,0),period = 12)
+fitARIMA2 <- arima(accidentestimeseries, order = model_order, seasonal=seasonal_order)
+fitARIMA2
+
+summary(fitARIMA2)
+
+acf(fitARIMA2$residuals)
+
+Box.test(fitARIMA2$residuals, lag=20, type="Ljung-Box")
+
+qqnorm(fitARIMA2$residuals)
+qqline(fitARIMA2$residuals)
+
+predict(fitARIMA2,n.ahead = 12)
+
+accidentes_test <- read.csv("serie_limpia_test.csv")
+accidentestimeseries_test <- ts(accidentes, frequency=80, start=c(2017,1,1))
+plot.ts(accidentestimeseries_test, plot.type=('single'))
+
+futurVal <- forecast(fitARIMA2,h=12, level=c(99.5))
+futurVal
+
+plot(futurVal)

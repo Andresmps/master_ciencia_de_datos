@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "actividad-2"
+version = "0.1.0"
+description = ""
+authors = ["Camilo Martinez <camilo.martinez@wizeline.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.1"
+statsmodels = "^0.14.1"
+scikit-learn = "^1.4.1.post1"
+numpy = "^1.26.4"
+seaborn = "^0.13.2"
+matplotlib = "^3.8.3"
+ipykernel = "^6.29.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
