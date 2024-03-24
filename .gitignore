@@ -6,6 +6,8 @@ __pycache__/
 # Omit data files
 **/*.json
 **/constants.py
+**/*.pdf
+**/*.zip
 
 # C extensions
 *.so
