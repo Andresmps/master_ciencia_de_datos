@@ -8,6 +8,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 cassandra-driver = "^3.29.1"
+logging = "^0.4.9.6"
+streamlit = "^1.33.0"
+watchdog = "^4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
