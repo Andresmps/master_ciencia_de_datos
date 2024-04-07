@@ -1,5 +1,7 @@
 # CRUD Cassandra y Python
 ## Sistemas de almacenamiento - Actividad 2
+#### Autor: Camilo Martinez
+
 
 Este README.md tiene como objectivo dar el detalle de la implementación realizada con un cluster de Cassandra 3.11, montado en docker, python 3.10 para la comunicación y automatización de procesos, y Dbeaver como entorno de trabajo de Cassandra.
 
@@ -95,12 +97,9 @@ película.
 
 ---
 
-Además, cabe destacar que para poder generar las operaciones CRUD no solo se conto con las tablas descritas anteriormente para el modelo lógico, sino que además se añadieron tablas de relaciones, y soporte. También, se expone que para la visualización del tablero, y evidenciación de que las operaciones funcionan correctamente se realizan consultas ineficientes, esto para facilicitar la visualización del lector. A continuación se muestran las tablas resultantes desde DBeaver.
+Además, cabe destacar que para poder generar las operaciones CRUD no solo se conto con las tablas descritas anteriormente para el modelo lógico, sino que además se añadieron tablas de relaciones, y soporte. También, se expone que para la visualización del tablero, y evidenciación de que las operaciones funcionan correctamente se realizan consultas ineficientes, esto para facilicitar la visualización del lector.
 
-![Modelo Logico 1](imagenes/modelo_logico_1.png)
-![Modelo Logico 2](imagenes/modelo_logico_1.png)
-
-Tablas soporte usadas:
+#### Tablas soporte usadas:
 - SoporteUsuario
 - SoportePelicula
 - SoporteCiudad
@@ -110,12 +109,19 @@ Tablas soporte usadas:
 - SoporteTipoBoleta
 - SoporteReserva
 
-Tablas relaciones
+#### Tablas relaciones
 - PeliculaFuncion: Relación Pelicula Funcion - Proyecta.
 - CiudadCine: Relación Ciudad Cine - Tiene.
 - CineSala: Relación Cine Sala - Posee.
 - UsuarioReservacion: Relación Usuario Reservación - Reserva.
 - ReservacionTipoBoleto: Relación Reservación Tipo de Boleto - Compra.
+
+A continuación se muestran las tablas resultantes desde DBeaver:
+
+![Modelo Logico 1](imagenes/modelo_logico_1.png)
+![Modelo Logico 2](imagenes/modelo_logico_1.png)
+
+
 
 ---
 
@@ -136,103 +142,112 @@ Las funcionalidades que se presentan están separadas por scripts de python para
 
 A continuación se muestran pantallazos de como lucen ambas interfaces. Mayormente me centrare en el tablero porque es más limpio visualmente de mostrar, sin embargo, queda a libre revisión la opción por terminal.
 
-#### - Tablero:
-Ejecución de tablero de streamlit:
+### Tablero:
+#### Ejecución de tablero de streamlit:
 ![Ejecucion](imagenes/tablero_ejecucion.png)
 
-Tablero página de inicio.
+#### Tablero página de inicio.
 ![Ejecucion](imagenes/tablero_inicio.png)
 
-Tablero página de consultas.
+#### Tablero página de consultas.
 ![Ejecucion](imagenes/tablero_consultas.png)
 
-Tablero página de inserciones.
+#### Tablero página de inserciones.
 ![Ejecucion](imagenes/tablero_inserciones.png)
 
-Tablero página de inserciones. Inserción de Reservación.
+#### Tablero página de inserciones. Inserción de Reservación.
 ![Ejecucion](imagenes/insercion_reservacion.png)
 
-Tablero página de actualizaciones.
+#### Tablero página de actualizaciones.
 ![Ejecucion](imagenes/tablero_actualizaciones.png)
 
-Tablero página de actualizaciones. Actualizar categoria pelicula.
+#### Tablero página de actualizaciones. Actualizar categoria pelicula.
 ![Ejecucion](imagenes/actualizacion_categoria.png)
 
-Tablero página de eliminaciones.
+#### Tablero página de eliminaciones.
 ![Ejecucion](imagenes/tablero_eliminaciones.png)
 
-Tablero página de eliminaciones. Eliminación relación Tarjeta Reservación.
+#### Tablero página de eliminaciones. Eliminación relación Tarjeta Reservación.
 ![Ejecucion](imagenes/eliminacion_tarjeta_reservacion.png)
 
-Tablero página de consultas. Consulta Tabla 1
+#### Tablero página de consultas. Consulta Tabla 1
 ![Ejecucion](imagenes/consulta_tabla1.png)
 
-Tablero página de consultas. Consulta Tabla 2
+#### Tablero página de consultas. Consulta Tabla 2
 ![Ejecucion](imagenes/consulta_tabla2.png)
 
-Tablero página de consultas. Consulta Tabla 3
+#### Tablero página de consultas. Consulta Tabla 3
 ![Ejecucion](imagenes/consulta_tabla3.png)
 
-Tablero página de consultas. Consulta Tabla 4
+#### Tablero página de consultas. Consulta Tabla 4
 ![Ejecucion](imagenes/consulta_tabla4.png)
 
-Tablero página de consultas. Consulta Tabla 5
+#### Tablero página de consultas. Consulta Tabla 5
 ![Ejecucion](imagenes/consulta_tabla5.png)
 
-Tablero página de consultas. Consulta Tabla 6
+#### Tablero página de consultas. Consulta Tabla 6
 ![Ejecucion](imagenes/consulta_tabla6.png)
 
-Tablero página de consultas. Consulta Tabla 7
+#### Tablero página de consultas. Consulta Tabla 7
 ![Ejecucion](imagenes/consulta_tabla7.png)
 
-Tablero página de consultas. Consulta Tabla 8
+#### Tablero página de consultas. Consulta Tabla 8
 ![Ejecucion](imagenes/consulta_tabla8.png)
 
-#### - Terminal:
+### Terminal:
 
-Ejecución de menú por terminal:
+#### Ejecución de menú por terminal:
 ![Ejecucion](imagenes/terminal_ejecucion.png)
 
-Mensaje de bienvenidad con menú:
+#### Mensaje de bienvenidad con menú:
 ![Ejecucion](imagenes/terminal_bienvenidad.png)
 
-Consulta de usuarios:
+#### Consulta de usuarios:
 ![Ejecucion](imagenes/terminal_usuarios.png)
 
-Consulta de reservaciones:
+#### Consulta de reservaciones:
 ![Ejecucion](imagenes/terminal_reservaciones.png)
 
 
 ### Fragmentros de funciones solicitadas
 
-Inserción de datos usuario:
+#### Inserción de datos usuario:
 ![Ejecucion](imagenes/insertar_usuario.png)
 
-Inserción de datos consulta 7:
+#### Inserción de datos consulta 7:
 ![Ejecucion](imagenes/insertar_tabla7.png)
 
-Inserción de datos pelicula:
+#### Inserción de datos pelicula:
 ![Ejecucion](imagenes/insertar_pelicula.png)
 
-Inserción de datos consulta 1:
+#### Inserción de datos consulta 1:
 ![Ejecucion](imagenes/insertar_tabla1.png)
 
-Inserción de datos consulta 6:
+#### Inserción de datos consulta 6:
 ![Ejecucion](imagenes/insertar_tabla6.png)
 
-Inserción de datos soporte pelicula:
+#### Inserción de datos soporte pelicula:
 ![Ejecucion](imagenes/insertar_tabla_pelicula_soporte.png)
 
-Inserción de datos de cine:
+#### Inserción de datos de cine:
 ![Ejecucion](imagenes/insertar_cine1.png)
 ![Ejecucion](imagenes/insertar_cine2.png)
 
-
-Inserción de relación Cine Sala - Posee
+#### Inserción de relación Cine Sala - Posee
 ![Ejecucion](imagenes/insertar_sala.png)
 
-Inserción de relación Usuario Reservacion - Reserva, Reservacion Tipo Boleto - Compra
+#### Inserción de relación Usuario Reservacion - Reserva, Reservacion Tipo Boleto - Compra
 ![Ejecucion](imagenes/insertar_reservacion.png)
+
+#### Actulización de categoria de pelicula
+![Ejecucion](imagenes/actualizar_consulta5.png)
+
+#### Eliminación relación tarjeta y reserva
+![Ejecucion](imagenes/eliminar_consulta5.png)
+
+#### Consultar tabla 5
+La clase select es la más amplia, ya que ofrece una gran variedad de consultas. Por simplicidad, solo mostrare una de ellas acá, pero la lógica es muy similar para las demás.
+![Ejecucion](imagenes/consulta_tabla_5.png)
 
 
 ### Siguiente pasos / Mejoras
