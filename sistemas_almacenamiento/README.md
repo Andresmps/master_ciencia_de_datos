@@ -147,6 +147,7 @@ A continuación se muestran pantallazos de como lucen ambas interfaces. Mayormen
 ![Ejecucion](imagenes/tablero_ejecucion.png)
 
 #### Tablero página de inicio.
+Note que hay dos botones para poder cargar datos de prueba, y limpiar todos los datos de las tablas. En todas las páginas se encuentran estos botones.
 ![Ejecucion](imagenes/tablero_inicio.png)
 
 #### Tablero página de consultas.
