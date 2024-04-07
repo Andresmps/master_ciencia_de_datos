@@ -38,8 +38,7 @@ if __name__ == "__main__":
 
     opciones = ['Inicio', 'Consultas', 'Inserciones', 'Actualizaciones', 'Eliminaciones']
     opcion_tabla = st.sidebar.selectbox(
-        'Seleccione la operación a realizar:', opciones,
-        index=opciones.index(st.session_state.opcion_tabla))
+        'Seleccione la operación a realizar:', opciones)
 
     if 'opcion_tabla' not in st.session_state:
         st.session_state.opcion_tabla = 'Inicio'
