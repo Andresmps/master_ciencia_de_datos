@@ -26,6 +26,7 @@
       
 <h1 id="crud-cassandra-y-python">CRUD Cassandra y Python </h1>
 <h2 id="sistemas-de-almacenamiento---actividad-2">Sistemas de almacenamiento - Actividad 2 </h2>
+<h4 id="autor-camilo-martinez">Autor: Camilo Martinez </h4>
 <p>Este <a href="http://README.md">README.md</a> tiene como objectivo dar el detalle de la implementación realizada con un cluster de Cassandra 3.11, montado en docker, python 3.10 para la comunicación y automatización de procesos, y Dbeaver como entorno de trabajo de Cassandra.</p>
 <p>El alcance de este trabajo se resume a continuación:</p>
 <ul>
@@ -317,10 +318,8 @@ película.</li>
 </tbody>
 </table>
 <hr>
-<p>Además, cabe destacar que para poder generar las operaciones CRUD no solo se conto con las tablas descritas anteriormente para el modelo lógico, sino que además se añadieron tablas de relaciones, y soporte. También, se expone que para la visualización del tablero, y evidenciación de que las operaciones funcionan correctamente se realizan consultas ineficientes, esto para facilicitar la visualización del lector. A continuación se muestran las tablas resultantes desde DBeaver.</p>
-<p><img src="imagenes/modelo_logico_1.png" alt="Modelo Logico 1"><br>
-<img src="imagenes/modelo_logico_1.png" alt="Modelo Logico 2"></p>
-<p>Tablas soporte usadas:</p>
+<p>Además, cabe destacar que para poder generar las operaciones CRUD no solo se conto con las tablas descritas anteriormente para el modelo lógico, sino que además se añadieron tablas de relaciones, y soporte. También, se expone que para la visualización del tablero, y evidenciación de que las operaciones funcionan correctamente se realizan consultas ineficientes, esto para facilicitar la visualización del lector.</p>
+<h4 id="tablas-soporte-usadas">Tablas soporte usadas: </h4>
 <ul>
 <li>SoporteUsuario</li>
 <li>SoportePelicula</li>
@@ -331,7 +330,7 @@ película.</li>
 <li>SoporteTipoBoleta</li>
 <li>SoporteReserva</li>
 </ul>
-<p>Tablas relaciones</p>
+<h4 id="tablas-relaciones">Tablas relaciones </h4>
 <ul>
 <li>PeliculaFuncion: Relación Pelicula Funcion - Proyecta.</li>
 <li>CiudadCine: Relación Ciudad Cine - Tiene.</li>
@@ -339,6 +338,9 @@ película.</li>
 <li>UsuarioReservacion: Relación Usuario Reservación - Reserva.</li>
 <li>ReservacionTipoBoleto: Relación Reservación Tipo de Boleto - Compra.</li>
 </ul>
+<p>A continuación se muestran las tablas resultantes desde DBeaver:</p>
+<p><img src="imagenes/modelo_logico_1.png" alt="Modelo Logico 1"><br>
+<img src="imagenes/modelo_logico_1.png" alt="Modelo Logico 2"></p>
 <hr>
 <h3 id="funcionalidades">Funcionalidades </h3>
 <p>Las funcionalidades que se presentan están separadas por scripts de python para aislar los tipos de funcionalidades, y facilitar un poco la lectura del código. Entre las caracteristicas particulas a denotar están:</p>
@@ -359,70 +361,77 @@ Ejecute <code>streamlit run tablero_consultas.py</code></li>
 </li>
 </ul>
 <p>A continuación se muestran pantallazos de como lucen ambas interfaces. Mayormente me centrare en el tablero porque es más limpio visualmente de mostrar, sin embargo, queda a libre revisión la opción por terminal.</p>
-<h4 id="--tablero">- Tablero: </h4>
-<p>Ejecución de tablero de streamlit:<br>
-<img src="imagenes/tablero_ejecucion.png" alt="Ejecucion"></p>
-<p>Tablero página de inicio.<br>
-<img src="imagenes/tablero_inicio.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas.<br>
-<img src="imagenes/tablero_consultas.png" alt="Ejecucion"></p>
-<p>Tablero página de inserciones.<br>
-<img src="imagenes/tablero_inserciones.png" alt="Ejecucion"></p>
-<p>Tablero página de inserciones. Inserción de Reservación.<br>
-<img src="imagenes/insercion_reservacion.png" alt="Ejecucion"></p>
-<p>Tablero página de actualizaciones.<br>
-<img src="imagenes/tablero_actualizaciones.png" alt="Ejecucion"></p>
-<p>Tablero página de actualizaciones. Actualizar categoria pelicula.<br>
-<img src="imagenes/actualizacion_categoria.png" alt="Ejecucion"></p>
-<p>Tablero página de eliminaciones.<br>
-<img src="imagenes/tablero_eliminaciones.png" alt="Ejecucion"></p>
-<p>Tablero página de eliminaciones. Eliminación relación Tarjeta Reservación.<br>
-<img src="imagenes/eliminacion_tarjeta_reservacion.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 1<br>
-<img src="imagenes/consulta_tabla1.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 2<br>
-<img src="imagenes/consulta_tabla2.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 3<br>
-<img src="imagenes/consulta_tabla3.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 4<br>
-<img src="imagenes/consulta_tabla4.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 5<br>
-<img src="imagenes/consulta_tabla5.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 6<br>
-<img src="imagenes/consulta_tabla6.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 7<br>
-<img src="imagenes/consulta_tabla7.png" alt="Ejecucion"></p>
-<p>Tablero página de consultas. Consulta Tabla 8<br>
-<img src="imagenes/consulta_tabla8.png" alt="Ejecucion"></p>
-<h4 id="--terminal">- Terminal: </h4>
-<p>Ejecución de menú por terminal:<br>
-<img src="imagenes/terminal_ejecucion.png" alt="Ejecucion"></p>
-<p>Mensaje de bienvenidad con menú:<br>
-<img src="imagenes/terminal_bienvenidad.png" alt="Ejecucion"></p>
-<p>Consulta de usuarios:<br>
-<img src="imagenes/terminal_usuarios.png" alt="Ejecucion"></p>
-<p>Consulta de reservaciones:<br>
-<img src="imagenes/terminal_reservaciones.png" alt="Ejecucion"></p>
+<h3 id="tablero">Tablero: </h3>
+<h4 id="ejecución-de-tablero-de-streamlit">Ejecución de tablero de streamlit: </h4>
+<p><img src="imagenes/tablero_ejecucion.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-inicio">Tablero página de inicio. </h4>
+<p><img src="imagenes/tablero_inicio.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas">Tablero página de consultas. </h4>
+<p><img src="imagenes/tablero_consultas.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-inserciones">Tablero página de inserciones. </h4>
+<p><img src="imagenes/tablero_inserciones.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-inserciones-inserción-de-reservación">Tablero página de inserciones. Inserción de Reservación. </h4>
+<p><img src="imagenes/insercion_reservacion.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-actualizaciones">Tablero página de actualizaciones. </h4>
+<p><img src="imagenes/tablero_actualizaciones.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-actualizaciones-actualizar-categoria-pelicula">Tablero página de actualizaciones. Actualizar categoria pelicula. </h4>
+<p><img src="imagenes/actualizacion_categoria.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-eliminaciones">Tablero página de eliminaciones. </h4>
+<p><img src="imagenes/tablero_eliminaciones.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-eliminaciones-eliminación-relación-tarjeta-reservación">Tablero página de eliminaciones. Eliminación relación Tarjeta Reservación. </h4>
+<p><img src="imagenes/eliminacion_tarjeta_reservacion.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-1">Tablero página de consultas. Consulta Tabla 1 </h4>
+<p><img src="imagenes/consulta_tabla1.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-2">Tablero página de consultas. Consulta Tabla 2 </h4>
+<p><img src="imagenes/consulta_tabla2.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-3">Tablero página de consultas. Consulta Tabla 3 </h4>
+<p><img src="imagenes/consulta_tabla3.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-4">Tablero página de consultas. Consulta Tabla 4 </h4>
+<p><img src="imagenes/consulta_tabla4.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-5">Tablero página de consultas. Consulta Tabla 5 </h4>
+<p><img src="imagenes/consulta_tabla5.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-6">Tablero página de consultas. Consulta Tabla 6 </h4>
+<p><img src="imagenes/consulta_tabla6.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-7">Tablero página de consultas. Consulta Tabla 7 </h4>
+<p><img src="imagenes/consulta_tabla7.png" alt="Ejecucion"></p>
+<h4 id="tablero-página-de-consultas-consulta-tabla-8">Tablero página de consultas. Consulta Tabla 8 </h4>
+<p><img src="imagenes/consulta_tabla8.png" alt="Ejecucion"></p>
+<h3 id="terminal">Terminal: </h3>
+<h4 id="ejecución-de-menú-por-terminal">Ejecución de menú por terminal: </h4>
+<p><img src="imagenes/terminal_ejecucion.png" alt="Ejecucion"></p>
+<h4 id="mensaje-de-bienvenidad-con-menú">Mensaje de bienvenidad con menú: </h4>
+<p><img src="imagenes/terminal_bienvenidad.png" alt="Ejecucion"></p>
+<h4 id="consulta-de-usuarios">Consulta de usuarios: </h4>
+<p><img src="imagenes/terminal_usuarios.png" alt="Ejecucion"></p>
+<h4 id="consulta-de-reservaciones">Consulta de reservaciones: </h4>
+<p><img src="imagenes/terminal_reservaciones.png" alt="Ejecucion"></p>
 <h3 id="fragmentros-de-funciones-solicitadas">Fragmentros de funciones solicitadas </h3>
-<p>Inserción de datos usuario:<br>
-<img src="imagenes/insertar_usuario.png" alt="Ejecucion"></p>
-<p>Inserción de datos consulta 7:<br>
-<img src="imagenes/insertar_tabla7.png" alt="Ejecucion"></p>
-<p>Inserción de datos pelicula:<br>
-<img src="imagenes/insertar_pelicula.png" alt="Ejecucion"></p>
-<p>Inserción de datos consulta 1:<br>
-<img src="imagenes/insertar_tabla1.png" alt="Ejecucion"></p>
-<p>Inserción de datos consulta 6:<br>
-<img src="imagenes/insertar_tabla6.png" alt="Ejecucion"></p>
-<p>Inserción de datos soporte pelicula:<br>
-<img src="imagenes/insertar_tabla_pelicula_soporte.png" alt="Ejecucion"></p>
-<p>Inserción de datos de cine:<br>
-<img src="imagenes/insertar_cine1.png" alt="Ejecucion"><br>
+<h4 id="inserción-de-datos-usuario">Inserción de datos usuario: </h4>
+<p><img src="imagenes/insertar_usuario.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-datos-consulta-7">Inserción de datos consulta 7: </h4>
+<p><img src="imagenes/insertar_tabla7.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-datos-pelicula">Inserción de datos pelicula: </h4>
+<p><img src="imagenes/insertar_pelicula.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-datos-consulta-1">Inserción de datos consulta 1: </h4>
+<p><img src="imagenes/insertar_tabla1.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-datos-consulta-6">Inserción de datos consulta 6: </h4>
+<p><img src="imagenes/insertar_tabla6.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-datos-soporte-pelicula">Inserción de datos soporte pelicula: </h4>
+<p><img src="imagenes/insertar_tabla_pelicula_soporte.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-datos-de-cine">Inserción de datos de cine: </h4>
+<p><img src="imagenes/insertar_cine1.png" alt="Ejecucion"><br>
 <img src="imagenes/insertar_cine2.png" alt="Ejecucion"></p>
-<p>Inserción de relación Cine Sala - Posee<br>
-<img src="imagenes/insertar_sala.png" alt="Ejecucion"></p>
-<p>Inserción de relación Usuario Reservacion - Reserva, Reservacion Tipo Boleto - Compra<br>
-<img src="imagenes/insertar_reservacion.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-relación-cine-sala---posee">Inserción de relación Cine Sala - Posee </h4>
+<p><img src="imagenes/insertar_sala.png" alt="Ejecucion"></p>
+<h4 id="inserción-de-relación-usuario-reservacion---reserva-reservacion-tipo-boleto---compra">Inserción de relación Usuario Reservacion - Reserva, Reservacion Tipo Boleto - Compra </h4>
+<p><img src="imagenes/insertar_reservacion.png" alt="Ejecucion"></p>
+<h4 id="actulización-de-categoria-de-pelicula">Actulización de categoria de pelicula </h4>
+<p><img src="imagenes/actualizar_consulta5.png" alt="Ejecucion"></p>
+<h4 id="eliminación-relación-tarjeta-y-reserva">Eliminación relación tarjeta y reserva </h4>
+<p><img src="imagenes/eliminar_consulta5.png" alt="Ejecucion"></p>
+<h4 id="consultar-tabla-5">Consultar tabla 5 </h4>
+<p>La clase select es la más amplia, ya que ofrece una gran variedad de consultas. Por simplicidad, solo mostrare una de ellas acá, pero la lógica es muy similar para las demás.<br>
+<img src="imagenes/consulta_tabla_5.png" alt="Ejecucion"></p>
 <h3 id="siguiente-pasos--mejoras">Siguiente pasos / Mejoras </h3>
 <ul>
 <li>Aún se puede mejorar la modularización de funciones dentro del código para reducir código repetido, y facilitar la lectura.</li>
