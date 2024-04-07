@@ -1,6 +1,5 @@
 # Importamos la líbreria necesaria
 import logging
-import streamlit as st
 
 from cassandra.cluster import Cluster
 
@@ -18,7 +17,6 @@ logging.basicConfig(
 
 logger = logging.getLogger(Logging.MENU_LOGGER.value)
 
-@st.cache_resource()
 def connectCassandra():
     """
         Descripción: Función para conectar a la base de datos de Cassandra
