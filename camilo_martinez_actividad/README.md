@@ -3,6 +3,12 @@
 #### Autor: Camilo Martinez
 
 
+[Github Repository Link](https://github.com/Andresmps/master_ciencia_de_datos/tree/main/camilo_martinez_actividad)
+
+**Python Main File:** menu.py
+
+**Note:** To run menu.py make sure to have all python files within /crud folder, they are dependencies.
+
 Este README.md tiene como objectivo dar el detalle de la implementación realizada con un cluster de Cassandra 3.11, montado en docker, python 3.10 para la comunicación y automatización de procesos, y Dbeaver como entorno de trabajo de Cassandra.
 
 El alcance de este trabajo se resume a continuación:
